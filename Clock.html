@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            font-weight: bold; /* Make the text bold */
+        }
+        .clock {
+            text-align: center;
+            font-size: calc(100vh / 1.5); /* Fill screen size */
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div id="time"></div>
+    </div>
+    <script>
+        function updateTime() {
+            const options = {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+            };
+            const now = new Date();
+            let timeString = now.toLocaleTimeString('en-US', options);
+            timeString = timeString.replace(/ (AM|PM)/i, ""); // Remove AM/PM
+            document.getElementById('time').textContent = timeString;
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime(); // initial call to set the time immediately
+    </script>
+</body>
+</html>
