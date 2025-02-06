@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Launcher</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e0f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            text-align: center;
+            width: 600px;
+        }
+        h1 {
+            color: #00796b;
+            font-size: 48px;
+            margin-bottom: 40px;
+        }
+        .file-input {
+            margin-bottom: 40px;
+        }
+        .file-input input {
+            display: none;
+        }
+        .file-input label {
+            background-color: #007bff;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 24px;
+            padding: 20px 40px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        .file-input label:hover {
+            background-color: #0056b3;
+        }
+        .launch-button {
+            background-color: #28a745;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 24px;
+            padding: 20px 40px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        .launch-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>File Launcher</h1>
+        <div class="file-input">
+            <input type="file" id="fileInput">
+            <label for="fileInput">Choose File</label>
+        </div>
+        <button class="launch-button" onclick="launchFile()">Launch File</button>
+    </div>
+
+    <script>
+        function launchFile() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            
+            if (file) {
+                const fileURL = URL.createObjectURL(file);
+                window.open(fileURL, '_blank');
+            } else {
+                alert('Please select a file first.');
+            }
+        }
+    </script>
+</body>
+</html>
